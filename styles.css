@@ -1,9 +1,9 @@
 #main-container {
-    background-color: #F44336;
+    background-color: #3949AB;
 }
 
 form h1 {
-    color: #F44336;
+    color: #3949AB;
 }
 
 .form-control:focus,
@@ -18,43 +18,44 @@ label {
     user-select: none;
     cursor: pointer;
     transition: 1.5s;
+    color: #8B8B8B;
 }
 
 .btn-main {
-    background-color: #F44336;
+    background-color: #3949AB;
     color: white;
 }
 
 .btn-main:hover {
     color: white;
-    box-shadow: 0 0 10px 1px rgba(244, 67, 54, .5);
+    box-shadow: 0 0 10px 1px rgba(57, 76, 171, .5);
 }
 
-.form-control:focus~.input-group-text,
-.form-select:focus~.input-group-text {
-    background-color: #F44336;
-    border-color: #F44336;
+.form-control:not(.is-invalid, .is-valid):focus~.input-group-text,
+.form-select:not(.is-invalid, .is-valid):focus~.input-group-text {
+    background-color: #3949AB;
+    border-color: #3949AB;
     color: white;
     transition: 1.5s;
 }
 
-.form-control~.focus-border:before,
-.form-control~.focus-border:after,
-.form-select~.focus-border:before,
-.form-select~.focus-border:after {
+.form-control:not(.is-invalid, .is-valid)~.focus-border:before,
+.form-control:not(.is-invalid, .is-valid)~.focus-border:after,
+.form-select:not(.is-invalid, .is-valid)~.focus-border:before,
+.form-select:not(.is-invalid, .is-valid)~.focus-border:after {
     content: "";
     position: absolute;
     top: 0;
     right: 0;
     width: 0;
     height: 2px;
-    background-color: #F44336;
+    background-color: #3949AB;
     transition: 0.2s;
     transition-delay: 0.2s;
 }
 
-.form-control~.focus-border:after,
-.form-select~.focus-border:after {
+.form-control:not(.is-invalid, .is-valid)~.focus-border:after,
+.form-select:not(.is-invalid, .is-valid)~.focus-border:after {
     top: auto;
     bottom: 0;
     right: auto;
@@ -62,22 +63,22 @@ label {
     transition-delay: 0.6s;
 }
 
-.form-control~.focus-border i:before,
-.form-control~.focus-border i:after,
-.form-select~.focus-border i:before,
-.form-select~.focus-border i:after {
+.form-control:not(.is-invalid, .is-valid)~.focus-border i:before,
+.form-control:not(.is-invalid, .is-valid)~.focus-border i:after,
+.form-select:not(.is-invalid, .is-valid)~.focus-border i:before,
+.form-select:not(.is-invalid, .is-valid)~.focus-border i:after {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 2px;
     height: 0;
-    background-color: #F44336;
+    background-color: #3949AB;
     transition: 0.2s;
 }
 
-.form-control~.focus-border i:after,
-.form-select~.focus-border i:after {
+.form-control:not(.is-invalid, .is-valid)~.focus-border i:after,
+.form-select:not(.is-invalid, .is-valid)~.focus-border i:after {
     left: auto;
     right: 0;
     top: auto;
@@ -85,29 +86,29 @@ label {
     transition-delay: 0.4s;
 }
 
-.form-control:focus~.focus-border:before,
-.form-control:focus~.focus-border:after,
-.form-select:focus~.focus-border:before,
-.form-select:focus~.focus-border:after {
+.form-control:not(.is-invalid, .is-valid):focus~.focus-border:before,
+.form-control:not(.is-invalid, .is-valid):focus~.focus-border:after,
+.form-select:not(.is-invalid, .is-valid):focus~.focus-border:before,
+.form-select:not(.is-invalid, .is-valid):focus~.focus-border:after {
     width: 100%;
     transition: 0.2s;
     transition-delay: 0.6s;
 }
 
-.form-control:focus~.focus-border:after,
-.form-select:focus~.focus-border:after {
+.form-control:not(.is-invalid, .is-valid):focus~.focus-border:after,
+.form-select:not(.is-invalid, .is-valid):focus~.focus-border:after {
     transition-delay: 0.2s;
 }
 
-.form-control:focus~.focus-border i:before,
-.form-control:focus~.focus-border i:after,
-.form-select:focus~.focus-border i:before,
-.form-select:focus~.focus-border i:after {
+.form-control:not(.is-invalid, .is-valid):focus~.focus-border i:before,
+.form-control:not(.is-invalid, .is-valid):focus~.focus-border i:after,
+.form-select:not(.is-invalid, .is-valid):focus~.focus-border i:before,
+.form-select:not(.is-invalid, .is-valid):focus~.focus-border i:after {
     height: 100%;
     transition: 0.2s;
 }
 
-.form-control:focus~.focus-border i:after,
-.form-select:focus~.focus-border i:after {
+.form-control:not(.is-invalid, .is-valid):focus~.focus-border i:after,
+.form-select:not(.is-invalid, .is-valid):focus~.focus-border i:after {
     transition-delay: 0.4s;
 }
