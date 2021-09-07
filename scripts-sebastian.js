@@ -21,18 +21,28 @@ form.addEventListener('submit', (event) => {
     const name = document.getElementById('name');
     const lastname = document.getElementById('lastname');
 
-    validation(name, formObj['name'] == '', 'Campo obligatorio');
-    validation(lastname, formObj['lastname'] == '', 'Campo obligatorio');
+    validation(
+        name, [formObj['name'] == '', formObj['name'].length > 25], ['Campo obligatorio', 'Longitud máxima: 25']
+    );
+
+    validation(
+        lastname, [formObj['lastname'] == '', formObj['lastname'].length > 25], ['Campo obligatorio', 'Longitud máxima: 25']
+    );
 });
 
-function validation(input, condition, message) {
-    if (condition) {
-        input.classList.add('is-invalid');
-        input.classList.remove('is-valid');
-        input.parentNode.querySelector('.invalid-feedback').innerText = message;
-    } else {
-        input.classList.add('is-valid');
-        input.classList.remove('is-invalid');
-        input.parentNode.querySelector('.invalid-feedback').innerText = '';
+function validation(input, conditions, messages) {
+    for (let i in conditions) {
+        let condition = conditions[i];
+
+        if (condition) {
+            input.classList.add('is-invalid');
+            input.classList.remove('is-valid');
+            input.parentNode.querySelector('.invalid-feedback').innerText = messages[i];
+            break;
+        } else {
+            input.classList.add('is-valid');
+            input.classList.remove('is-invalid');
+            input.parentNode.querySelector('.invalid-feedback').innerText = '';
+        }
     }
 }
