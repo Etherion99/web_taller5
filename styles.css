@@ -112,3 +112,8 @@ label {
 .form-select:not(.is-invalid, .is-valid):focus~.focus-border i:after {
     transition-delay: 0.4s;
 }
+
+.inputrange{
+    width: 60%;
+    
+}

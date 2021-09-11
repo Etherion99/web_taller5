@@ -56,3 +56,14 @@ function noshowTastes(){
         x.style.display = "none";
     } 
 }
+
+
+function updateValuemin(input)
+{
+    document.getElementById('minCost').value = input;
+}
+
+function updateValuemax(input)
+{
+    document.getElementById('maxCost').value = input;
+}

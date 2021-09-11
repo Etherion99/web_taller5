@@ -107,17 +107,15 @@
                     </div>
                 </div>
             </div>
-            <div class="row mb-2">
-                <div class="radio-button">    
-                    <div>
-                        <input type="radio" name="tastes" id="no-radio" value="no-tastes" checked onclick="noshowTastes()">        
-                        <label for="no-radio">No Registrar Gusto</label>  
-                    </div>             
-                    <div>
-                        <input type="radio" name="tastes" id="radio" value="tastes" onclick="showTastes()">
-                        <label for="radio">Registrar Gustos</label>
-                    </div>                              
-                </div>                        
+            <div class="row mb-4">                   
+                <div class="col">
+                    <input type="radio" name="tastes" id="no-radio" value="no-tastes" checked onclick="noshowTastes()">        
+                    <label for="no-radio" class="form-label fw-bold">No Registrar Gusto</label>  
+                </div>             
+                <div  class="col">
+                    <input type="radio" name="tastes" id="radio" value="tastes" onclick="showTastes()">
+                    <label for="radio" class="form-label fw-bold">Registrar Gustos</label>
+                </div>                  
             </div>
             <div class="row mb-3" id="gustos">
                 <div class="col">
@@ -167,7 +165,39 @@
                         </div>
                     </div>
                 </div> 
-            </div>                     
+                <div class="row mb-3">
+                    <label class="form-label fw-bold">Rango de precios</label>                       
+                    <div class="col">
+                        <label for="irange1" class="form-label fw-bold">mínimo:</label>
+                        <input class="form-control order-2" id="irange1" min="0" max="1000000" type="range" onchange="updateValuemin(this.value)">
+                    </div>
+                    <div  class="col"> 
+                        <label for="irange2" class="form-label fw-bold">máximo:</label>
+                        <input class="form-control order-2" id="irange2"  min="0" max="1000000" type="range" onchange="updateValuemax(this.value)">
+                    </div>
+                </div>  
+                <div class="row mb-3">
+                    <div class="col" >
+                        <label for="minCost" class="form-label fw-bold">Valor mínimo</label>    
+                        <div class="input-group d-flex"> 
+                            <span class="input-group-text order-1" style="width: 15%;"><i class="fas fa-dollar-sign"></i></span>       
+                            <span class="focus-border"><i></i></span>
+                            <div class="invalid-feedback order-3"></div>
+                            <input type="text" class="form-control order-1 inputrange" id="minCost" id="minCost" value="">
+                        </div>  
+                    </div>
+                    <div class="col">                        
+                        <label for="minCost" class="form-label fw-bold">Valor Máximo</label>  
+                        <div class="input-group d-flex">  
+                            <span class="input-group-text order-1" style="width: 15%;"><i class="fas fa-dollar-sign"></i></span>
+                            <span class="focus-border"><i></i></span>
+                            <div class="invalid-feedback order-3"></div>
+                            <input type="text" class="form-control order-1 inputrange" id="maxCost">
+                        </div> 
+                    </div>
+
+                </div> 
+            </div>                                
             <div class="row mb-2 justify-content-center">                
                 <button class="btn btn-main col-3 fw-bold">Registrarme</button>
             </div>
