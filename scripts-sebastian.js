@@ -22,7 +22,7 @@ form.addEventListener('submit', (event) => {
     const lastname = document.getElementById('lastname');
 
     validation(
-        name, [formObj['name'] == 'Nombre', formObj['name'].length > 25], ['Campo obligatorio', 'Longitud máxima: 25']
+        name, [formObj['name'] == '', formObj['name'].length > 25], ['Campo obligatorio', 'Longitud máxima: 25']
     );
 
     validation(
