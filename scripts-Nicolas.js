@@ -14,7 +14,6 @@ form.addEventListener('submit', (event) => {
     const username = document.getElementById('username');  
     var nameRegex = /^[a-zA-Z0-9]+$/;
     const password = document.getElementById('password');    
-    window.alert("está funcionando")
     
     if (!checkAddress())return ;
 
