@@ -1,76 +1,96 @@
 
 
+document.addEventListener("DOMContentLoaded", function () {
+
 const form = document.getElementById('form');
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
+    console.log(form);
 
     const formData = new FormData(form);
     const formObj = Object.fromEntries(formData);
 
+    
     const username = document.getElementById('username');  
+    var nameRegex = /^[a-zA-Z0-9]+$/;
     const password = document.getElementById('password');    
+    window.alert("está funcionando")
+    
+    if (!checkAddress())return ;
 
-    validation(
-        username, [formObj['username'] == '', formObj['username'].length > 20, formObj['username'].length < 10], ['Campo obligatorio', 'Longitud máxima: 20', 'Longitud minima : 10']
-    );
-    validation(
-        password, [formObj['password'] == '', formObj['password'].length > 25, formObj['password'].length < 15], ['Campo obligatorio', 'Longitud máxima: 25', 'Longitud minima : 15']
-    );
+    if (username.value.length < 10 || username.value.length > 20 ){
+        setWrongInput(username,'La longitud debe estar entre 10 y 20 carácteres');
+        return ;
+        
+    } else if (username.value.match(nameRegex)==null){
+        setWrongInput(username,'El nombre de usuario no debe tener carácteres especiales');
+        return ;
+    }
+    if (!checkPassword() ) return ;
+  
     
 });
-
-function validation(input, conditions, messages) {
-    for (let i in conditions) {
-        let condition = conditions[i];
-
-        if (condition) {
-            input.classList.add('is-invalid');
-            input.classList.remove('is-valid');
-            input.parentNode.querySelector('.invalid-feedback').innerText = messages[i];
-            break;
-        } else {
-            input.classList.add('is-valid');
-            input.classList.remove('is-invalid');
-            input.parentNode.querySelector('.invalid-feedback').innerText = '';
+function checkAddress(){
+    const address = document.getElementById('address'); 
+    console.log(address.value);
+    if(!address.value ){
+        
+    
+        setWrongInput(address, 'La dirección no puede estar vacia')
+        return false;
+    } 
+    for(const prefix of ['cll','cra','av','anv','trans']){
+        console.log(prefix)
+        if(address.value.startsWith(prefix)){
+            removeWrongInput(address);
+            return true;
         }
     }
+    setWrongInput(address, 'La dirección debe empezar por cll, cra, av, anv, trans')
+    
+    return false;
 }
 
-function checkPassword(str)
-  {          
-    var re =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[#-%-/-&]).{15,20}$/;
-    return re.test(str);
-  }
 
-function verificarPasswords() {
- 
-    password = document.getElementById('password');
-    password2 = document.getElementById('password2');
+function setWrongInput(input, messages) {
+    input.classList.add('is-invalid');
+    input.classList.remove('is-valid');
+    input.parentNode.querySelector('.invalid-feedback').innerText = messages;
+}
+function removeWrongInput(input) {
+    input.classList.remove('is-invalid');
+    input.classList.add('is-valid');
+    input.parentNode.querySelector('.invalid-feedback').innerText = '';
+}
 
-    if (password.value != password2.value) {
+function checkPassword()
+  {  
+    
+    const password = document.getElementById('password'); 
+    var re =/^(?=.*[0-9])(?=.*[!#%/&])[a-zA-Z0-9!#%/&]{15,20}$/;
+    console.log(password.value);
+    if(password.value.match(re)==null ){
+    
+        setWrongInput(password, 'La contraseña debe contener al menos de uno de estos carácteres especiales #,%,/,& y debe tener entre 15 y 20 carácteres');
+        return false;
+    } 
+    const password2 = document.getElementById('password2');
+    
+    if (password.value !== password2.value) {
  
         
-        document.getElementById("error").classList.add("mostrar");
+        setWrongInput(password2,'Las contraseñas deben coincidir');
  
         return false;
-    } else {
- 
-        
-        document.getElementById("error").classList.remove("mostrar");
- 
-        
-        document.getElementById("ok").classList.remove("ocultar");
- 
-         
-        document.getElementById("registrarse").disabled = true;
- 
-        
-        setTimeout(function() {
-            location.reload();
-        }, 3000);
- 
-        return true;
     }
+    
+          
+    
+    return true;
+  }
+
+
  
-}
+
+});
