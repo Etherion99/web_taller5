@@ -1,4 +1,5 @@
 
+
 document.addEventListener("DOMContentLoaded", function () {
 
 const form = document.getElementById('form');
@@ -12,20 +13,14 @@ form.addEventListener('submit', (event) => {
 
     
     const username = document.getElementById('username');  
-    var nameRegex = /^[a-zA-Z0-9]+$/;
-    const password = document.getElementById('password');    
     
-    if (!checkAddress())return ;
+    const password = document.getElementById('password');    
+ 
+    
+    checkAddress();
 
-    if (username.value.length < 10 || username.value.length > 20 ){
-        setWrongInput(username,'La longitud debe estar entre 10 y 20 carácteres');
-        return ;
-        
-    } else if (username.value.match(nameRegex)==null){
-        setWrongInput(username,'El nombre de usuario no debe tener carácteres especiales');
-        return ;
-    }
-    if (!checkPassword() ) return ;
+    checkUser(username);
+    checkPassword();
   
     
 });
@@ -50,6 +45,18 @@ function checkAddress(){
     return false;
 }
 
+function checkUser(input){
+    var nameRegex = /^[a-zA-Z0-9]+$/;
+    if (input.value.length < 10 || input.value.length > 20 ){
+        setWrongInput(input,'La longitud debe estar entre 10 y 20 carácteres');
+        return;
+        
+    } else if (input.value.match(nameRegex)==null){
+        setWrongInput(input,'El nombre de usuario no debe tener carácteres especiales');
+        return ;
+    }
+    removeWrongInput(input);
+}
 
 function setWrongInput(input, messages) {
     input.classList.add('is-invalid');
@@ -66,7 +73,7 @@ function checkPassword()
   {  
     
     const password = document.getElementById('password'); 
-    var re =/^(?=.*[0-9])(?=.*[!#%/&])[a-zA-Z0-9!#%/&]{15,20}$/;
+    var re =/^(?=.*[0-9])(?=.*[!#%/&])(?=.*[A-Z])[a-zA-Z0-9!#%/&]{15,20}$/;
     console.log(password.value);
     if(password.value.match(re)==null ){
     
@@ -74,17 +81,18 @@ function checkPassword()
         return false;
     } 
     const password2 = document.getElementById('password2');
-    
+    console.log(password2.value);
     if (password.value !== password2.value) {
  
         
         setWrongInput(password2,'Las contraseñas deben coincidir');
- 
+        
         return false;
     }
     
           
-    
+    removeWrongInput(password);
+    removeWrongInput(password2);
     return true;
   }
 
