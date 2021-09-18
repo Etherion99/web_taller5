@@ -10,7 +10,7 @@ form.addEventListener('submit', (event) => {
     const email = document.getElementById('email');    
 
     validation(
-        email, [formObj['email'] == '', formObj['email'].length > 120], ['Campo obligatorio', 'Longitud máxima: 25']
+        email, [formObj['email'] == '', formObj['email'].length > 120], ['Campo obligatorio', 'Longitud máxima: 120']
     );
     
 });
